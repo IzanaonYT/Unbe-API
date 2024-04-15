@@ -4,7 +4,7 @@ import json
 router = APIRouter()
 
 # Ruta para obtener todos los items
-@router.get("api/items_shop/{guild_id}/")
+@router.get("/api/items_shop/{guild_id}/")
 async def get_items(guild_id: str):
     try:
         # Carga el archivo JSON que contiene los items
