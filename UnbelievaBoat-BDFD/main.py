@@ -3,6 +3,10 @@ import importlib.util
 from fastapi import FastAPI, APIRouter
 
 app = FastAPI()
+@app.get("/")
+def on_route():
+    return {"status": 200}
+
 
 def registrar_rutas_desde_directorio(router, directorio):
     for nombre_archivo in os.listdir(directorio):
