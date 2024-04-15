@@ -38,17 +38,17 @@ def load_server_data(server_id: str):
       return json.load(file)
   else:
     raise HTTPException(status_code=400,
-                        detail="El servidor ya está inicializado.")
+                        detail="El servidor ya no está inicializado.")
 
 
 @router.post("/api/add_item/{server_id}/")
 async def add_item_to_server(server_id: str, item: Item):
     data = load_server_data(server_id)
 
-    # Agregar el nuevo item a la lista de items en los datos del servidor
+    
     data["items"].append(item.dict())
 
-    # Guardar los datos actualizados en el archivo
+
     folder_path = f"{DATA_FOLDER}/{server_id}"
     file_path = f"{folder_path}/data.json"
     with open(file_path, "w") as file:
